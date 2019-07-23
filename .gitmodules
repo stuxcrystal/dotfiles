@@ -1,0 +1,3 @@
+[submodule ".config/nvim/pack/main/start/vim-airline"]
+	path = .config/nvim/pack/main/start/vim-airline
+	url = https://github.com/vim-airline/vim-airline
