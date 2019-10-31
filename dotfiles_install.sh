@@ -19,3 +19,4 @@ git --git-dir=$HOME/.dotfiles --work-tree=$HOME git submodules update --init --r
 
 chsh -s $(which zsh) $(id -un)
 zsh
+
