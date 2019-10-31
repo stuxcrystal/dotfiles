@@ -5,10 +5,10 @@
 export ZSH="$HOME/.oh-my-zsh"
 
 # Base16 Shell
-BASE16_SHELL="$HOME/.config/base16-shell/"
-[ -n "$PS1" ] && \
-    [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
-            eval "$("$BASE16_SHELL/profile_helper.sh")"
+# BASE16_SHELL="$HOME/.config/base16-shell/"
+# [ -n "$PS1" ] && \
+#     [ -s "$BASE16_SHELL/profile_helper.sh" ] && \
+#            eval "$("$BASE16_SHELL/profile_helper.sh")"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -74,7 +74,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git python pip pipenv debian)
+plugins=(git python pip pipenv debian rbenv)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -103,3 +103,14 @@ source $HOME/.bash_aliases
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+if [ -e "$HOME/.customrc" ]; then
+    source $HOME/.customrc
+fi
+
+if cat /proc/version | grep Microsoft; then
+    WINTEMPPATH_RAW=$(cmd.exe /c "echo %TEMP%")
+    WINTEMPPATH=$(wslpath $WINTEMPPATH_RAW)
+  
+    cp $HOME/.config/weasel-pageant/weasel-helper.exe $WINTEMPPATH
+    eval $($HOME/.config/weasel-pageant/weasel-pageant --reuse --helper $WINTEMPPATH/weasel-helper.exe)
+fi
