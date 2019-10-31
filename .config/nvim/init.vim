@@ -1,3 +1,5 @@
+" set termguicolors t_Co=256
+
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='base16_atelierlakeside'
@@ -12,3 +14,4 @@ set colorcolumn=79,119 cursorline
 highlight ColorColumn ctermbg=236
 highlight CursorLine ctermbg=238 cterm=NONE
 highlight CursorColumn ctermbg=238 cterm=NONE
+

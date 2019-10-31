@@ -16,3 +16,6 @@
 [submodule ".config/nvim/pack/main/start/vim-airline-themes"]
 	path = .config/nvim/pack/main/start/vim-airline-themes
 	url = https://github.com/vim-airline/vim-airline-themes
+[submodule ".config/base16-shell"]
+	path = .config/base16-shell
+	url = https://github.com/chriskempson/base16-shell.git
