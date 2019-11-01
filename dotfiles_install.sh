@@ -2,7 +2,7 @@
 sudo apt update
 sudo apt upgrade
 
-sudo apt install neovim zsh git
+sudo apt install neovim zsh git fzf
 
 sudo update-alternatives --set editor $(which nvim)
 sudo update-alternatives --set vim $(which nvim)

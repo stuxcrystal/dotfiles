@@ -21,3 +21,9 @@ highlight CursorColumn ctermbg=238 cterm=NONE
 if $WSL == 'yes'
     source ~/.config/nvim/wsl.vim
 endif
+
+if filereadable(expand("~/.config/nvim/$STUX_ENVIRONMENT.vim"))
+    source ~/.config/nvim/$STUX_ENVIRONMENT.vim
+endif
+
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
