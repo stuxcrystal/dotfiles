@@ -15,7 +15,7 @@ git --git-dir=$HOME/.dotfiles --work-tree=$HOME init $HOME
 git --git-dir=$HOME/.dotfiles --work-tree=$HOME remote add origin git@github.com:stuxcrystal/dotfiles
 git --git-dir=$HOME/.dotfiles --work-tree=$HOME config --local status.showUntrackedFiles no
 git --git-dir=$HOME/.dotfiles --work-tree=$HOME pull origin master
-git --git-dir=$HOME/.dotfiles --work-tree=$HOME git submodules update --init --recursive
+git --git-dir=$HOME/.dotfiles --work-tree=$HOME submodule update --init --recursive
 
 chsh -s $(which zsh) $(id -un)
 zsh
