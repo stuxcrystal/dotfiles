@@ -103,6 +103,17 @@ source $HOME/.bash_aliases
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+##
+# Detect System Configuration
+if cat /proc/version | grep Microsoft > /dev/null; then
+    export WSL=yes
+else
+    export WSL=no
+fi
+
+##
+# Custom Server-Specific Configuration
 if [ -e "$HOME/.customrc" ]; then
     source $HOME/.customrc
 fi
@@ -110,21 +121,7 @@ fi
 if [[ ! -v STUX_ENVIRONMENT ]]; then
     export STUX_ENVIRONMENT="main"
 fi
-
-if cat /proc/version | grep Microsoft > /dev/null; then
-    pushd /mnt/c > /dev/null
-    WINTEMPPATH_RAW=$(cmd.exe /c "echo %TEMP%")
-    WINTEMPPATH=$(wslpath $WINTEMPPATH_RAW | tr -d '\n' | tr -d '\r')
-    popd > /dev/null
-  
-    if [ ! -e $WINTEMPPATH/weasel-pageant/helper.exe ]; then
-        mkdir -p $WINTEMPPATH/weasel-pageant/
-        cp $HOME/.config/weasel-pageant/helper.exe $WINTEMPPATH/weasel-pageant/helper.exe
-    fi
-    eval $($HOME/.config/weasel-pageant/weasel-pageant --reuse --helper $WINTEMPPATH/weasel-pageant//helper.exe) > /dev/null
-    export PATH=$PATH:$HOME/.config/wsl/bin
-
-    export WSL=yes
-else
-    export WSL=no
+source $HOME/.config/zshrc/base.zshrc
+if [[ -e "$HOME/.config/zshrc/$STUX_ENVIRONMENT.zshrc" ]]; then
+    source $HOME/.config/zshrc/$STUX_ENVIRONMENT.zshrc
 fi
