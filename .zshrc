@@ -107,10 +107,19 @@ if [ -e "$HOME/.customrc" ]; then
     source $HOME/.customrc
 fi
 
-if cat /proc/version | grep Microsoft; then
+if [[ ! -v STUX_ENVIRONMENT ]]; then
+    export STUX_ENVIRONMENT="main"
+fi
+
+if cat /proc/version | grep Microsoft > /dev/null; then
+    pushd /mnt/c > /dev/null
     WINTEMPPATH_RAW=$(cmd.exe /c "echo %TEMP%")
-    WINTEMPPATH=$(wslpath $WINTEMPPATH_RAW)
+    WINTEMPPATH=$(wslpath $WINTEMPPATH_RAW | tr -d '\n' | tr -d '\r')
+    popd > /dev/null
   
-    cp $HOME/.config/weasel-pageant/weasel-helper.exe $WINTEMPPATH
-    eval $($HOME/.config/weasel-pageant/weasel-pageant --reuse --helper $WINTEMPPATH/weasel-helper.exe)
+    if [ ! -e $WINTEMPPATH/weasel-pageant/helper.exe ]; then
+        mkdir -p $WINTEMPPATH/weasel-pageant/
+        cp $HOME/.config/weasel-pageant/helper.exe $WINTEMPPATH/weasel-pageant/helper.exe
+    fi
+    eval $($HOME/.config/weasel-pageant/weasel-pageant --reuse --helper $WINTEMPPATH/weasel-pageant//helper.exe)
 fi
