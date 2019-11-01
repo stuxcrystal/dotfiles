@@ -121,5 +121,10 @@ if cat /proc/version | grep Microsoft > /dev/null; then
         mkdir -p $WINTEMPPATH/weasel-pageant/
         cp $HOME/.config/weasel-pageant/helper.exe $WINTEMPPATH/weasel-pageant/helper.exe
     fi
-    eval $($HOME/.config/weasel-pageant/weasel-pageant --reuse --helper $WINTEMPPATH/weasel-pageant//helper.exe)
+    eval $($HOME/.config/weasel-pageant/weasel-pageant --reuse --helper $WINTEMPPATH/weasel-pageant//helper.exe) > /dev/null
+    export PATH=$PATH:$HOME/.config/wsl/bin
+
+    export WSL=yes
+else
+    export WSL=no
 fi

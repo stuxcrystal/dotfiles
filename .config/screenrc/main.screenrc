@@ -1,13 +1,3 @@
-startup_message  off   # Keine Willkommensnachricht
-vbell            off   # Kein visuelles Blinken
-msgwait 1              # Nachrichten für 1 Sekunden anzeigen
-defutf8          on    # utf8 bei neuen fenstern
-autodetach       on    # on = default
-shelltitle   '$ |bash'    # Fenstertitel
-hardcopydir $HOME      # Screenshots ins Homeverzeichnis
-defscrollback 10000    # Buffer
-defmonitor off         # Aktivitäten nicht in Fenstertitel schreiben
-shell "/usr/bin/zsh"
+source ~/.config/screenrc/common.screenrc
 
-caption always "%{= wk} %-w%{= KW} [%n %t] %{-}%+w %= | @%H | %l | %Y-%m-%d %c "
-
+escape ^Jj

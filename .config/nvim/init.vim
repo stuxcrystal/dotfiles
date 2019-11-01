@@ -18,3 +18,6 @@ highlight ColorColumn ctermbg=236
 highlight CursorLine ctermbg=238 cterm=NONE
 highlight CursorColumn ctermbg=238 cterm=NONE
 
+if $WSL == 'yes'
+    source ~/.config/nvim/wsl.vim
+endif
