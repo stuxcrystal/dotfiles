@@ -9,7 +9,7 @@ defscrollback 10000    # Buffer
 defmonitor off         # Aktivitäten nicht in Fenstertitel schreiben
 shell "/usr/bin/zsh"
 
-caption always "%{= wk} %-w%{= KW} [%n %t] %{-}%+w %= | @%H | %l | %Y-%m-%d %c "
+caption always "%{= wk} %-w%{= KW} [%n %t] %{-}%+w %= | @%H | %l | %d.%m.%Y %c "
 
 term screen-256color
 maptimeout 10
