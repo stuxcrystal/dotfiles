@@ -10,11 +10,14 @@ install_pkgs() {
         sudo ln -s $(which nvim) $(dirname $(which nvim))/vim 
       fi
       
-      if [ ! -f $(dirname $(which nvim))/vim ]; then
+      if [ ! -f $(dirname $(which nvim))/vi ]; then
         sudo ln -s $(which nvim) $(dirname $(which nvim))/vi
       fi
       
-      if 
+      if [ ! -f $(dirname $(which nvim))/editor ]; then
+        sudo ln -s $(which nvim) $(dirname $(which nvim))/editor
+      fi
+      
       ;;
     ubuntu)
       sudo apt update
