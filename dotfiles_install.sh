@@ -5,7 +5,7 @@ install_pkgs() {
   DIST="$(cat /etc/*-release | grep ^ID= | tr '=' '\n' | tail --lines=1)"
   case "$DIST" in
     arch)
-      sudo pacman -Syu neovim zsh git fzf
+      sudo pacman -Syu neovim zsh git fzf wget
       if [ ! -f $(dirname $(which nvim))/vim ]; then
         sudo ln -s $(which nvim) $(dirname $(which nvim))/vim 
       fi
@@ -23,7 +23,7 @@ install_pkgs() {
       sudo apt update
       sudo apt upgrade
     
-      sudo apt install neovim zsh git fzf
+      sudo apt install neovim zsh git fzf wget
     
       sudo update-alternatives --set editor $(which nvim)
       sudo update-alternatives --set vim $(which nvim)
@@ -56,12 +56,16 @@ install_conf() {
   popd
 
   sudo chsh -s $(which zsh) $(id -un)
-  zsh
+  
+  mkdir -p $HOME/.ssh
+  wget -qO- https://github.com/stuxcrystal.keys > $HOME/.ssh/authorized_keys
 }
 
 run() {
   install_pkgs
   install_conf
+  
+  zsh
 }
 
 run
