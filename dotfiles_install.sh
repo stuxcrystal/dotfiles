@@ -5,7 +5,7 @@ install_pkgs() {
   DIST="$(cat /etc/*-release | grep ^ID= | tr '=' '\n' | tail --lines=1)"
   case "$DIST" in
     arch)
-      sudo pacman -Syu neovim zsh git fzf wget
+      sudo pacman -Syu neovim zsh git fzf wget screen
       if [ ! -f $(dirname $(which nvim))/vim ]; then
         sudo ln -s $(which nvim) $(dirname $(which nvim))/vim 
       fi
