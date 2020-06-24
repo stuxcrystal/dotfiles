@@ -1,5 +1,9 @@
 " set termguicolors t_Co=256
 
+if filereadable(expand("~/.config/nvim/local.vim"))
+    source ~/.config/nvim/local.vim
+end
+
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='base16_atelierlakeside_custom'
